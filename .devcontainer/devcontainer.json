@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
 {
-	"name": "TS: Existing Docker Compose (Extend)",
+	"name": "TypeScript Debugger Template: Existing Docker Compose (Extend)",
 
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
@@ -30,8 +30,9 @@
 				"Catppuccin.catppuccin-vsc" // this is optional, but I use it on everything and this is my repo so huzzah
 			],
 			"settings": {
-				"workbench.colorTheme": "Catppuccin Frappé", // this is optional, but I use it on everything and this is my repo so huzzah
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
+				// begin optional settings
+				"workbench.colorTheme": "Catppuccin Frappé", 
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
 				"python.analysis.extraPaths": ["/usr/local/lib/python*/site-packages"],
 				"python.testing.unittestEnabled": true,
 				"python.testing.pytestEnabled": false,
@@ -40,6 +41,7 @@
 				"python.testing.unittestArgs": ["-m", "unittest", "tests/python/tests.py"], // file where all tests are summarized
 				"testing.autoRun.delay": 2000,
                 "testing.autoRun.enabled": "on",
+				// end optional settings
 				"terminal.integrated.shell.linux": "bash",
 				"terminal.integrated.profiles.linux": {
 					"bash (container default)": {

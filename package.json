@@ -14,7 +14,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "debug": "TS_NODE_FILES=true nodemon --watch 'src/**/*.ts' --exec node --inspect -r ts-node/register src/*.ts",
+    "debug": "TS_NODE_FILES=true nodemon --watch 'src/**/*.ts' --exec node --inspect -r ts-node/register src/greeter.ts",
     "watch": "tsc --watch"
   }
 }

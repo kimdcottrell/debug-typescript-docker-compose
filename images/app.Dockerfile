@@ -35,15 +35,19 @@ ENV LOCAL_MACHINE_UID=1000
 RUN groupadd --gid ${LOCAL_MACHINE_GID} local; \
     useradd --gid ${LOCAL_MACHINE_GID} --uid ${LOCAL_MACHINE_UID} local; \
     mkdir -p /home/local; \
-    chown -R local:local /home/local
+    chown -R local:local /home/local; \
+    chown -R local:local /usr/local;
 
 USER ${LOCAL_MACHINE_UID}:${LOCAL_MACHINE_GID}
 
 WORKDIR /workspaces
 
 # install npm packages as fast as possible, with a cache for future rebuilds
-COPY package*.json ./
-RUN --mount=type=cache,target=/root/.npm npm ci
+ENV NPM_CONFIG_CACHE=/home/local/.npm
+COPY --chown=local:local package*.json ./
+RUN mkdir -p /home/local/.npm && chown -R local:local /home/local/.npm
+RUN --mount=type=cache,target=/home/local/.npm,uid=${LOCAL_MACHINE_UID},gid=${LOCAL_MACHINE_GID} \
+    npm i
 
 RUN <<"BASHRC" cat >> /home/local/.bashrc 
 

@@ -9,4 +9,11 @@ services:
       - .:/workspaces
     working_dir: /workspaces
     command: tail -F /dev/null
+    networks:
+      - default
+
+networks:
+  # Creating our own network allows us to connect between containers using their service name.
+  default:
+    driver: bridge
 
