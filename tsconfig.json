@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "types": ["node"],
+    "noImplicitAny": true, // do not allow type undefined vars to default to any, this will help with error catching.
+    "removeComments": true,
+    "noEmitOnError": true, // only generate ./build if errors in ts do not exist
+    "preserveConstEnums": true, // makes const enums a source-code feature only, with no runtime traces.
+    "paths": {
+      "#/*": ["./src/*"],
+    },
+    "outFile": "dist/index.js",
+    "rootDir": "/workspaces/",
+    "sourceMap": true, // handy for debuggers and other tools
+    "skipLibCheck": true
+  }
+}

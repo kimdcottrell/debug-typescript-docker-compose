@@ -1,0 +1,20 @@
+{
+  "name": "ts.local.dev",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "debug": "TS_NODE_FILES=true nodemon --watch 'src/**/*.ts' --exec node --inspect -r ts-node/register src/*.ts",
+    "watch": "tsc --watch"
+  }
+}
