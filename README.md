@@ -37,12 +37,14 @@ But if you're on **linux** and stubbornly not using `docker desktop`:
 ```
 # docker --version
 Docker version 27.3.1, build ce1223035a
+
 # docker compose version
 Docker Compose version 2.31.0
+
 # docker buildx version
 github.com/docker/buildx 0.19.2 1fc5647dc281ca3c2ad5b451aeff2dce84f1dc49
+
 # code --version (as https://aur.archlinux.org/packages/visual-studio-code-bin)
 1.95.3
 f1a4fb101478ce6ec82fe9627c43efbf9e98c813
 x64
-
