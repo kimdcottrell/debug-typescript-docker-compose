@@ -9,28 +9,4 @@ services:
       - .:/workspaces
     working_dir: /workspaces
     command: tail -F /dev/null
-    labels:
-      - traefik.enable=true
-      - traefik.http.middlewares.app-ts-redirect-web-secure.redirectscheme.scheme=https
-      - traefik.http.routers.app-ts.middlewares=app-ts-redirect-web-secure
-      - traefik.http.routers.app-ts-web.rule=Host(`ts.local.dev`)
-      - traefik.http.routers.app-ts-web.entrypoints=web
-      - traefik.http.routers.app-ts-web-secure.rule=Host(`ts.local.dev`)
-      - traefik.http.routers.app-ts-web-secure.tls=true
-      - traefik.http.routers.app-ts-web-secure.entrypoints=web-secure
-      # if you have multiple ports exposed on the service, specify port in the web-secure service
-      - traefik.http.services.app-ts-web-secure.loadbalancer.server.port=3000
-    networks:
-      - default
-      - proxy
-    # ports:
-    #   - "9229:9229" # for vscode debugging
-
-
-networks:
-  # Creating our own network allows us to connect between containers using their service name.
-  default:
-    driver: bridge
-  proxy:
-    external: true
 
