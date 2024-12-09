@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "system",
+    "module": "ESNext",
     "types": ["node"],
     "noImplicitAny": true, // do not allow type undefined vars to default to any, this will help with error catching.
     "removeComments": true,
@@ -9,7 +9,7 @@
     "paths": {
       "#/*": ["./src/*"],
     },
-    "outFile": "dist/index.js",
+    "outDir": "dist",
     "rootDir": "/workspaces/",
     "sourceMap": true, // handy for debuggers and other tools
     "skipLibCheck": true
