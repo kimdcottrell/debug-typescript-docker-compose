@@ -11,6 +11,8 @@ It details how to do things like configure a typescript debugger in vscode, how 
 docker compose up --build -d
 ```
 
+node node_modules/eslint/bin/eslint --fix --parser typescript-eslint --rule 'indent: [1,4,{SwitchCase: 1}]' src/
+
 Now start vscode.
 
 The required extensions should auto-install. 
@@ -36,6 +38,39 @@ But if you're on **linux** and stubbornly not using `docker desktop`:
 - docker 
 - docker-compose 
 - docker-buildx
+
+## Linting, Formatting, and VSCode Integration
+
+Linting and formatting are two different things in (javascript)[https://prettier.io/docs/en/comparison]. Linting serves to bug catch bugs by insisting on certain things about codde quality. Formatting is your syntax enforcement, e.g. tabs vs spaces for indentation.
+
+This codebase assumes:
+
+- (typescript-eslint)[https://typescript-eslint.io/] for linting your typescript-only files
+- (prettier)[https://prettier.io] for formatting
+- (.editorconfig)[https://editorconfig.org/] to actually hold all of the formatting checks for all files in this codebase
+- `prettier` (falls back)[https://prettier.io/docs/en/configuration#editorconfig] to `.editorconfig` with overrides available in `.prettierrc`
+
+This setup, along with the following vscode settings, allows all the plugin configurations to work together inside vscode:
+
+```
+{
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "EditorConfig.EditorConfig"
+            ],
+            "settings": {
+                "typescript.format.enable": true,
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                "source.fixAll.eslint": "explicit"
+                },
+            }
+        }
+    }
+}
+```
 
 ## Last Tested Versions
 

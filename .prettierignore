@@ -1,0 +1,15 @@
+# Ignore everything except JS-ey or CSS code.
+# Based on https://stackoverflow.com/a/70715829/458193
+*
+!**/*.js
+!**/*.jsx
+!**/*.ts
+!**/*.tsx
+!*/
+
+!**/*.css
+
+# Ignore artifacts:
+build
+coverage
+node_modules

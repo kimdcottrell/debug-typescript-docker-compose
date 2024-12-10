@@ -1,0 +1,26 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[images/*.Dockerfile]
+indent_style = tab
+index_size = 2
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Matches the exact files either package.json or .travis.yml
+[*.json]
+indent_style = space
+indent_size = 2
+
+[*.{js,ts,tsx,jsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 80

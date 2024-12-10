@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types" // required for type node to work
+    ],
     "noImplicitAny": true, // do not allow type undefined vars to default to any, this will help with error catching.
     "removeComments": true,
     "noEmitOnError": true, // only generate ./build if errors in ts do not exist
     "preserveConstEnums": true, // makes const enums a source-code feature only, with no runtime traces.
     "paths": {
-      "#/*": ["./src/*"],
+      "#/*": [
+        "./src/*"
+      ],
     },
     "outDir": "dist",
     "rootDir": "/workspaces/",

@@ -19,13 +19,13 @@ COPY --from=busybox /bin/tee /bin/tee
 # add in any packages we can't just COPY from an image
 # NOTE: this is not needed for this image, but is an example on how to do it
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
-    --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    apt-get --no-install-recommends install -y gpg; \
-    mkdir -p /etc/apt/keyrings; \
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | gpg --dearmor -o /etc/apt/keyrings/gierens.gpg; \
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | tee /etc/apt/sources.list.d/gierens.list; \
-    chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list; \
-    apt-get update && apt-get --no-install-recommends install -y eza
+	--mount=type=cache,target=/var/lib/apt,sharing=locked \
+	apt-get --no-install-recommends install -y gpg; \
+	mkdir -p /etc/apt/keyrings; \
+	wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | gpg --dearmor -o /etc/apt/keyrings/gierens.gpg; \
+	echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | tee /etc/apt/sources.list.d/gierens.list; \
+	chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list; \
+	apt-get update && apt-get --no-install-recommends install -y eza
 
 # this makes it so the containers and local machine can all play nice with each other.
 # this exists since if you're not running Docker Desktop, certain folders will change to something like 1033:1033 on your local machine,
@@ -33,10 +33,10 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 ENV LOCAL_MACHINE_GID=1000
 ENV LOCAL_MACHINE_UID=1000
 RUN groupadd --gid ${LOCAL_MACHINE_GID} local; \
-    useradd --gid ${LOCAL_MACHINE_GID} --uid ${LOCAL_MACHINE_UID} local; \
-    mkdir -p /home/local; \
-    chown -R local:local /home/local; \
-    chown -R local:local /usr/local;
+	useradd --gid ${LOCAL_MACHINE_GID} --uid ${LOCAL_MACHINE_UID} local; \
+	mkdir -p /home/local; \
+	chown -R local:local /home/local; \
+	chown -R local:local /usr/local;
 
 USER ${LOCAL_MACHINE_UID}:${LOCAL_MACHINE_GID}
 
@@ -47,7 +47,7 @@ ENV NPM_CONFIG_CACHE=/home/local/.npm
 COPY --chown=local:local package*.json ./
 RUN mkdir -p /home/local/.npm && chown -R local:local /home/local/.npm
 RUN --mount=type=cache,target=/home/local/.npm,uid=${LOCAL_MACHINE_UID},gid=${LOCAL_MACHINE_GID} \
-    npm i
+	npm i
 
 RUN <<"BASHRC" cat >> /home/local/.bashrc 
 
