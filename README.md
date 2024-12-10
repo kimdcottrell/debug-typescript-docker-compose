@@ -15,9 +15,14 @@ Now start vscode.
 
 The required extensions should auto-install. 
 
-To debug, from the left side menu, hit `Run and Debug (Ctrl+Shift+D)` and in the top menu in the newly presented sidebar, run `Run npm debug`. 
+To debug:
 
-There's a sample script you can add breakpoints to in `src/`. 
+- open `src/greeters.ts` file (or any file in `src/`) and be on that tab in your editor
+- add breakpoints by clicking on the left side of the line number in the script
+- from the left side menu, hit `Run and Debug (Ctrl+Shift+D)` 
+- in the top menu in the newly presented sidebar, run `tsx debug`. 
+
+The debugger will run on the file you have open (see `.vscode/launch.json` and [here](https://tsx.is/vscode#setup) for more info). 
 
 ## Requirements
 

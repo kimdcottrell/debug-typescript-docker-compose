@@ -12,6 +12,6 @@
     "outDir": "dist",
     "rootDir": "/workspaces/",
     "sourceMap": true, // handy for debuggers and other tools
-    "skipLibCheck": true
+    "skipLibCheck": true,
   }
 }
